@@ -28,8 +28,7 @@ class KegiatanModel extends Model
             ->selectCount('id', 'total') 
             ->groupBy('kategori') 
             ->orderBy('kategori', 'ASC') 
-            ->get() 
-            ->getResultArray(); 
+            ->get()->getResultArray(); 
     } 
 
 
