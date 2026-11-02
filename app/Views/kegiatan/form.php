@@ -23,11 +23,23 @@
  <input id="judul" type="text" name="judul" maxlength="150"
  value="<?= esc(old('judul') ?? ($item['judul'] ?? '')) ?>" required>
  </p>
+
  <p>
- <label for="kategori">Kategori</label><br>
- <input id="kategori" type="text" name="kategori" maxlength="80"
- value="<?= esc(old('kategori') ?? ($item['kategori'] ?? '')) ?>" required>
+    <label for="kategori">Kategori</label> <br>
+    <?php
+        $opsiKategori = ['Seminar', 'Workshop', 'Lomba', 'Organisasi'];
+        $ketTerpilih = old('kategori')?? ($item['kategori'] ?? '');
+    ?>
+
+    <select name="kategori" id="kategori" required>
+        <option value="">-- Pilih Kategori --</option>
+            <?php foreach ($opsiKategori as $kat): ?>
+                <option value="<?= esc($kat) ?>" <?= ($katTerpilih === $kat) ? 'selected' : '' ?> >
+                    <?= esc($kat) ?>
+                </option>
+    </select>
  </p>
+
  <p>
  <label for="kuota">Kuota</label><br>
  <input id="kuota" type="number" name="kuota" min="0"

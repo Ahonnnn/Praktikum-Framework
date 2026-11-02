@@ -31,6 +31,16 @@ class KegiatanModel extends Model
             ->get()->getResultArray(); 
     } 
 
+    public function cariKeyword(string $keyword): array
+    {
+        return $this->builder()
+                    ->like('judul', $keyword)
+                    ->orLike('kategori', $keyword)
+                    ->orderBy('id', 'ASC')
+                    ->get()
+                    ->getResultArray();
+    }
+
 
     //     return [
     //         ['id'=> 1, 'judul'=> 'Workshop Web', 'kategori'=> 'Teknologi', 'kuota'=> 30, 'lokasi' => 'Aula Stmik Palangka Raya'],

@@ -31,3 +31,4 @@ $routes->post('kegiatan/(:num)/update', 'Kegiatan::perbarui/$1', ['filter' => 'c
 $routes->post('kegiatan/(:num)/hapus', 'Kegiatan::hapus/$1', ['filter' => 'csrf']);
 $routes->get('kegiatan/(:num)', 'Kegiatan::detail/$1');
 
+$routes->get('kegiatan/cari', 'Kegiatan::cari');

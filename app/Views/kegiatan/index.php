@@ -14,7 +14,10 @@
  <p style="color:green" role="status"><?= esc($pesan) ?></p>
 <?php endif; ?>
 
-<p><a href="<?= site_url('kegiatan/tambah') ?>">+ Tambah Kegiatan</a></p>
+<p>
+    <a href="<?= site_url('kegiatan/tambah') ?>">+ Tambah Kegiatan</a> <br>
+    <a href="<?= site_url('kegiatan/cari') ?>">Cari Kegiatan</a>
+</p>
 
 <table border="1" cellpadding="8" cellspacing="0">
  <thead><tr>

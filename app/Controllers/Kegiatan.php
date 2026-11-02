@@ -20,7 +20,7 @@ class Kegiatan extends BaseController
  {
  return [
  'judul' => 'required|min_length[3]|max_length[150]',
- 'kategori' => 'required|max_length[80]',
+ 'kategori' => 'required|in_list[Seminar,Workshop,Lomba,Organisasi]',
  'kuota' => 'required|is_natural',
  ];
  }
@@ -99,4 +99,20 @@ class Kegiatan extends BaseController
  return redirect()->to(site_url('kegiatan'))
  ->with('success', 'Kegiatan berhasil dihapus.');
  }
+
+ public function cari()
+   {
+      helper('url');
+      $keyword = trim((string) $this->request->getGet('q'));
+
+      $kegiatan = ($keyword !== '') 
+         ? $this->modelKegiatan()->cariKeyword($keyword) 
+         : [];
+
+      return view('kegiatan/cari', [
+         'kegiatan' => $kegiatan,
+         'keyword'  => $keyword,
+      ]);
+   }
+
 }
