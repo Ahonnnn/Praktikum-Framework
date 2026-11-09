@@ -5,15 +5,18 @@
 <h2><?= $mode === 'edit' ? 'Ubah Kegiatan' : 'Tambah Kegiatan' ?></h2>
 <?php $errors = session('errors') ?? []; ?>
 
-<?php if ($errors): ?>
- <div role="alert" style="color:#9b1c1c">
- <strong>Periksa input:</strong>
- <ul>
- <?php foreach ($errors as $error): ?>
- <li><?= esc($error) ?></li>
- <?php endforeach; ?>
- </ul>
- </div>
+<!-- Sisipkan dalam app/Views/kegiatan/form.php, 
+     tepat sebelum elemen <form>. --> 
+<?php $errors = session('errors') ?? []; ?> 
+<?php if ($errors !== []): ?> 
+  <div role="alert" style="color:#a10000"> 
+    <strong>Periksa kembali data:</strong> 
+    <ul> 
+      <?php foreach ($errors as $message): ?> 
+        <li><?= esc($message) ?></li> 
+      <?php endforeach; ?> 
+    </ul> 
+  </div> 
 <?php endif; ?>
 
 <form action="<?= esc($action) ?>" method="post">
@@ -27,8 +30,8 @@
  <p>
     <label for="kategori">Kategori</label> <br>
     <?php
-        $opsiKategori = ['Seminar', 'Workshop', 'Lomba', 'Organisasi'];
-        $ketTerpilih = old('kategori')?? ($item['kategori'] ?? '');
+        $opsiKategori = ['Seminar', 'Workshop', 'Lomba', 'Organisasi', 'Teknologi', 'Kreatif', 'Komunikasi'];
+        $katTerpilih = old('kategori')?? ($item['kategori'] ?? '');
     ?>
 
     <select name="kategori" id="kategori" required>
@@ -37,6 +40,7 @@
                 <option value="<?= esc($kat) ?>" <?= ($katTerpilih === $kat) ? 'selected' : '' ?> >
                     <?= esc($kat) ?>
                 </option>
+            <?php endforeach; ?>
     </select>
  </p>
 

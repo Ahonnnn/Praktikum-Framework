@@ -1,4 +1,4 @@
 <hr>
-<footer><small>Pemrograman Framework - Minggu 4</small></footer>
+<footer><small>Pemrograman Framework - Minggu 5</small></footer>
 </body>
 </html>
